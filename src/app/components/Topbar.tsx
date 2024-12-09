@@ -1,30 +1,36 @@
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 import { FaCheck, FaExclamationCircle } from "react-icons/fa";
 
 const Topbar = () => {
   return (
-    <div className="w-full flex flex-col sm:flex-row bg-[#272343] pt-[14px] pb-[14px] items-center justify-between h-[45px] sm:h-[50px]">
-      <div className="max-w-screen-xl mx-auto container flex items-center justify-between w-full px-4">
-        {/* Left Section */}
-        <p className="text-white flex items-center space-x-2 font-normal text-center sm:text-left xs:text-left text-[10px] sm:text-[12px] xs:text-[12px]">
+    <div className="w-full bg-[#272343] py-[14px] sm:py-[14px] flex flex-col sm:flex-row items-center justify-between h-[45px] sm:h-[50px]">
+      <div className="max-w-screen-xl mx-auto container px-4 flex items-center justify-between w-full">
+        {/* Left Section: Promo Message */}
+        <div className="text-white flex items-center space-x-2 text-[10px] sm:text-[12px] font-normal text-center sm:text-left xs:text-left">
           <FaCheck className="text-white" />
           <span>Free shipping on all orders over $50</span>
-        </p>
+        </div>
 
-        {/* Right Section */}
-        <ul className="text-white flex items-center space-x-4 font-normal text-center sm:text-left xs:text-left text-[10px] sm:text-[12px] xs:text-[12px]">
-          <li className="flex items-center space-x-1 cursor-pointer">
+        {/* Right Section: Language Selector, FAQ and Help */}
+        <div className="text-white flex items-center space-x-4 text-[10px] sm:text-[12px] font-normal text-center sm:text-left xs:text-left">
+          {/* Language Selector */}
+          <div className="flex items-center space-x-1 cursor-pointer">
             <span>Eng</span>
-            <ChevronDown />
-          </li>
-          <Link href="/faq"><li className="cursor-pointer">FAQs</li></Link>
-          <li className="flex items-center space-x-2 cursor-pointer">
+            <ChevronDown className="text-white" />
+          </div>
+
+          {/* FAQ Link */}
+          <Link href="/faq">
+            <a className="cursor-pointer">FAQs</a>
+          </Link>
+
+          {/* Help Section */}
+          <div className="flex items-center space-x-2 cursor-pointer">
             <FaExclamationCircle className="text-white" />
             <span>Need Help</span>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

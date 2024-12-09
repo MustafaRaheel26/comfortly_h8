@@ -4,86 +4,99 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const handleMenuToggle = () => {
+    setMenuOpen((prev) => !prev);
   };
 
   return (
-    <nav className="w-full bg-white pt-[14px] pb-[14px]">
-      <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 lg:px-0 ml-3">
-        {/* Desktop Menu (Visible above 768px, hidden on mobile) */}
-        <div className="hidden md:flex gap-8 ml-3">
-          <Link href="/" className="text-[#007580] text-[14px] font-medium">
+    <nav className="bg-white border-b border-gray-200">
+      <div className="container mx-auto px-4 flex justify-between items-center py-4">
+        {/* Logo Section */}
+        <div>
+          <Link href="/" className="text-[#007580] text-lg font-bold">
+            Comforty
+          </Link>
+        </div>
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center space-x-6">
+          <Link href="/" className="text-gray-700 hover:text-[#007580]">
             Home
           </Link>
-          <Link href={"#"} className="text-[14px] font-medium">
+          <Link href="#" className="text-gray-700 hover:text-[#007580]">
             Shop
           </Link>
-          <Link href="/product" className="text-[14px] font-medium">
+          <Link href="/product" className="text-gray-700 hover:text-[#007580]">
             Product
           </Link>
-          <Link href={"#"} className="text-[14px] font-medium">
+          <Link href="#" className="text-gray-700 hover:text-[#007580]">
             Pages
           </Link>
-          <Link href="/about" className="text-[14px] font-medium">
+          <Link href="/about" className="text-gray-700 hover:text-[#007580]">
             About
           </Link>
         </div>
 
-        {/* Contact Information (Visible above 768px) */}
-        <div className="hidden md:flex items-center gap-4 ml-auto mr-4">
-          <span className="font-normal text-[#636270] text-[14px]">
-            Contact:
-          </span>
-          <span className="font-medium text-[#272343] text-[14px] ml-1">
-            (808) 555-0111
-          </span>
+        {/* Contact Info (Desktop Only) */}
+        <div className="hidden md:flex items-center space-x-2">
+          <span className="text-gray-500">Contact:</span>
+          <span className="text-gray-800 font-medium">(808) 555-0111</span>
         </div>
 
-        {/* Mobile Menu Button (Visible below 768px) */}
+        {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden flex items-center justify-center p-2"
-          onClick={toggleMenu}
+          className="md:hidden p-2 focus:outline-none"
+          onClick={handleMenuToggle}
+          aria-label="Toggle navigation menu"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
+          {menuOpen ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
               strokeWidth="2"
-              d={
-                isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-              }
-            />
-          </svg>
+              stroke="currentColor"
+              className="w-6 h-6 text-gray-700"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              className="w-6 h-6 text-gray-700"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
         </button>
       </div>
 
-      {/* Mobile Menu Items (Visible below 768px) */}
-      {isMenuOpen && (
-        <div className="lg:hidden flex flex-col gap-4 mt-4 px-4">
-          <Link href="/" className="text-[#007580] text-[14px] font-medium">
-            Home
-          </Link>
-          <Link href={""} className="text-[14px] font-medium">
-            Shop
-          </Link>
-          <Link href="/product" className="text-[14px] font-medium">
-            Product
-          </Link>
-          <Link href={"#"} className="text-[14px] font-medium">
-            Pages
-          </Link>
-          <Link href="/about" className="text-[14px] font-medium">
-            About
-          </Link>
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-gray-50 border-t border-gray-200">
+          <div className="flex flex-col items-start space-y-4 py-4 px-4">
+            <Link href="/" className="text-gray-700 hover:text-[#007580]">
+              Home
+            </Link>
+            <Link href="#" className="text-gray-700 hover:text-[#007580]">
+              Shop
+            </Link>
+            <Link href="/product" className="text-gray-700 hover:text-[#007580]">
+              Product
+            </Link>
+            <Link href="#" className="text-gray-700 hover:text-[#007580]">
+              Pages
+            </Link>
+            <Link href="/about" className="text-gray-700 hover:text-[#007580]">
+              About
+            </Link>
+          </div>
         </div>
       )}
     </nav>
@@ -91,3 +104,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

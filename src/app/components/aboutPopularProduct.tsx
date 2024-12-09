@@ -1,48 +1,60 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
 
 const AboutPopularProduct = () => {
   return (
-    <div className="max-w-screen-xl mx-auto mt-32 px-6">
-      <h2 className="text-[32px] font-semibold text-left mb-12">
-        Our Popular Products
-      </h2>
-      <div className="flex flex-col sm:flex-row lg:flex-row justify-between gap-8">
-        <div className="text-center">
+    <section className="max-w-screen-xl mx-auto mt-32 px-6">
+      {/* Section Title */}
+      <header className="mb-12">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-left">
+          Our Popular Products
+        </h2>
+      </header>
+
+      {/* Products Grid */}
+      <div className="flex flex-col sm:flex-row justify-between gap-8">
+        {/* Product Card 1 */}
+        <div className="flex flex-col items-start">
           <Image
             src="/1.jpg"
-            alt="1"
+            alt="The Poplar Suede Sofa"
             width={590}
             height={375}
-            className="object-cover mx-auto"
+            className="w-full h-auto object-cover rounded-lg"
           />
-          <p className="pt-5 text-[20px] font-normal text-left ">The Poplar Suede Sofa</p>
-          <p className="pt-2 text-[18px] font-normal mb-32 text-left ">$99.00</p>
+          <h3 className="pt-5 text-lg font-medium text-left">
+            The Poplar Suede Sofa
+          </h3>
+          <p className="pt-2 text-md text-left text-gray-600">$99.00</p>
         </div>
-        <div className="text-center">
+
+        {/* Product Card 2 */}
+        <div className="flex flex-col items-start">
           <Image
             src="/2.jpg"
-            alt="2"
+            alt="The Dandy Chair"
             width={305}
             height={375}
-            className="object-cover mx-auto"
+            className="w-full h-auto object-cover rounded-lg"
           />
-          <p className="pt-5 text-[20px] font-normal text-left ">The Dandy Chair</p>
-          <p className="pt-2 text-[18px] font-normal mb-32 text-left ">$99.00</p>
+          <h3 className="pt-5 text-lg font-medium text-left">The Dandy Chair</h3>
+          <p className="pt-2 text-md text-left text-gray-600">$99.00</p>
         </div>
-        <div className="text-center">
+
+        {/* Product Card 3 */}
+        <div className="flex flex-col items-start">
           <Image
             src="/3.jpg"
-            alt="3"
+            alt="The Dandy Chair"
             width={305}
             height={375}
-            className="object-cover mx-auto"
+            className="w-full h-auto object-cover rounded-lg"
           />
-          <p className="pt-5 text-[20px] font-normal text-left ">The Dandy Chair</p>
-          <p className="pt-2 text-[18px] font-normal mb-32 text-left ">$99.00</p>
+          <h3 className="pt-5 text-lg font-medium text-left">The Dandy Chair</h3>
+          <p className="pt-2 text-md text-left text-gray-600">$99.00</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

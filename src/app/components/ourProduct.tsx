@@ -2,6 +2,7 @@ import { ShoppingCart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
+
 interface Product {
   id: number;
   title: string;
@@ -18,7 +19,7 @@ export default function OurProduct() {
       id: 1,
       title: "Library Stool Chair",
       price: 20,
-      image: "/01.jpg",
+      image: "/c1.jpg",
       isNew: true,
     },
     {
@@ -26,26 +27,26 @@ export default function OurProduct() {
       title: "Library Stool Chair",
       price: 20,
       originalPrice: 30,
-      image: "/02.jpg",
+      image: "/c2.jpg",
       isSale: true,
     },
     {
       id: 3,
       title: "Library Stool Chair",
       price: 20,
-      image: "/03.jpg",
+      image: "/c3.jpg",
     },
     {
       id: 4,
       title: "Library Stool Chair",
       price: 20,
-      image: "/04.jpg",
+      image: "/c4.jpg",
     },
     {
       id: 5,
       title: "Library Stool Chair",
       price: 20,
-      image: "/05.jpg",
+      image: "/c5.jpg",
       isNew: true,
     },
     {
@@ -53,34 +54,41 @@ export default function OurProduct() {
       title: "Library Stool Chair",
       price: 20,
       originalPrice: 30,
-      image: "/06.jpg",
+      image: "/c6.jpg",
       isSale: true,
     },
     {
       id: 7,
       title: "Library Stool Chair",
       price: 20,
-      image: "/07.jpg",
+      image: "/c7.jpg",
     },
     {
       id: 8,
       title: "Library Stool Chair",
       price: 20,
-      image: "/01.jpg",
+      image: "/c8.jpg",
     },
   ];
 
   return (
-    <div className="container mx-auto px-4 py-20">
-      <h1 className="text-3xl text-center font-semibold text-[#1C1B1F] tracking-tight  mb-8">
-        {" "}
-        Our Products
-      </h1>
+    <section className="container mx-auto px-6 py-20">
+      {/* Section Title */}
+      <header className="mb-10 text-center">
+        <h1 className="text-3xl font-semibold text-[#1C1B1F] tracking-tight">
+          Our Products
+        </h1>
+      </header>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Products Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((product) => (
-          <div key={product.id} className="group relative rounded-lg bg-white">
-            <div className="relative aspect-square overflow-hidden rounded-lg">
+          <div
+            key={product.id}
+            className="group relative rounded-lg bg-white shadow-md overflow-hidden"
+          >
+            {/* Product Image */}
+            <div className="relative aspect-square">
               {product.isNew && (
                 <Badge className="absolute left-3 top-3 bg-emerald-500 hover:bg-emerald-600">
                   New
@@ -88,34 +96,40 @@ export default function OurProduct() {
               )}
               {product.isSale && (
                 <Badge className="absolute left-3 top-3 bg-orange-500 hover:bg-orange-600">
-                  Sales
+                  Sale
                 </Badge>
               )}
-              <Link href={"components/productDectription/discription"}>
+              <Link href="/components/productDescription/description">
                 <Image
                   src={product.image}
                   alt={product.title}
-                  height={400}
                   width={400}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  height={400}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </Link>
             </div>
-            <div className="mt-4 flex items-center justify-between">
-              <div>
-                <h3 className="text-sm text-[#1C1B1F]">{product.title}</h3>
-                <div className="mt-1 flex items-center gap-2">
-                  <span className="text-lg font-medium text-[#1C1B1F]">
-                    ${product.price}
+
+            {/* Product Details */}
+            <div className="p-4">
+              <h3 className="text-sm font-medium text-[#1C1B1F]">
+                {product.title}
+              </h3>
+              <div className="mt-2 flex items-center gap-2">
+                <span className="text-lg font-semibold text-[#1C1B1F]">
+                  ${product.price}
+                </span>
+                {product.originalPrice && (
+                  <span className="text-sm text-gray-500 line-through">
+                    ${product.originalPrice}
                   </span>
-                  {product.originalPrice && (
-                    <span className="text-sm text-gray-500 line-through">
-                      ${product.originalPrice}
-                    </span>
-                  )}
-                </div>
+                )}
               </div>
-              <button className="rounded-full bg-[#00B5A5] p-2 text-white transition-colors hover:bg-[#00A294]">
+            </div>
+
+            {/* Add to Cart Button */}
+            <div className="absolute bottom-4 right-4">
+              <button className="flex items-center justify-center w-10 h-10 rounded-full bg-[#00B5A5] text-white hover:bg-[#00A294] transition-colors">
                 <ShoppingCart className="h-5 w-5" />
                 <span className="sr-only">Add to cart</span>
               </button>
@@ -123,6 +137,6 @@ export default function OurProduct() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

@@ -19,7 +19,7 @@ export default function HotProduct() {
           {/* Orange chair (left side) */}
           <div className="w-full md:w-[48%]">
             <Image
-              src="/03.jpg"
+              src="/c3.jpg"
               alt="Orange modern chair"
               className="h-full w-full object-cover"
               width={500}
@@ -32,7 +32,7 @@ export default function HotProduct() {
           <div className="grid grid-cols-2 gap-4 w-full md:w-[60%] lg:w-[48%]">
             <div className="aspect-square">
               <Image
-                src="/04.jpg"
+                src="/c4.jpg"
                 alt="White tufted chair"
                 className="h-full w-full object-cover"
                 width={500}
@@ -41,7 +41,7 @@ export default function HotProduct() {
             </div>
             <div className="aspect-square">
               <Image
-                src="/01.jpg"
+                src="/c1.jpg"
                 alt="Gray upholstered chair"
                 className="h-full w-full object-cover"
                 width={500}
@@ -50,7 +50,7 @@ export default function HotProduct() {
             </div>
             <div className="aspect-square">
               <Image
-                src="/06.jpg"
+                src="/c6.jpg"
                 alt="Vintage white chair"
                 className="h-full w-full object-cover"
                 width={500}
@@ -59,7 +59,7 @@ export default function HotProduct() {
             </div>
             <div className="aspect-square">
               <Image
-                src="/01.jpg"
+                src="/c1.jpg"
                 alt="Vintage white chair duplicate"
                 className="h-full w-full object-cover"
                 width={500}

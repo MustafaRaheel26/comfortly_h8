@@ -28,7 +28,7 @@ const Instagram = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 pb-24">
           <div className="aspect-square relative overflow-hidden rounded-lg">
             <Image
-              src="/01.jpg"
+              src="/c1.jpg"
               alt="Instagram product 1"
               layout="fill"
               objectFit="cover"
@@ -36,7 +36,7 @@ const Instagram = () => {
           </div>
           <div className="aspect-square relative overflow-hidden rounded-lg">
             <Image
-              src="/02.jpg"
+              src="/c2.jpg"
               alt="Instagram product 2"
               layout="fill"
               objectFit="cover"
@@ -44,7 +44,7 @@ const Instagram = () => {
           </div>
           <div className="aspect-square relative overflow-hidden rounded-lg">
             <Image
-              src="/03.jpg"
+              src="/c3.jpg"
               alt="Instagram product 3"
               layout="fill"
               objectFit="cover"
@@ -52,7 +52,7 @@ const Instagram = () => {
           </div>
           <div className="aspect-square relative overflow-hidden rounded-lg">
             <Image
-              src="/04.jpg"
+              src="/c4.jpg"
               alt="Instagram product 4"
               layout="fill"
               objectFit="cover"
@@ -60,7 +60,7 @@ const Instagram = () => {
           </div>
           <div className="aspect-square relative overflow-hidden rounded-lg">
             <Image
-              src="/05.jpg"
+              src="/c5.jpg"
               alt="Instagram product 5"
               layout="fill"
               objectFit="cover"
@@ -68,7 +68,7 @@ const Instagram = () => {
           </div>
           <div className="aspect-square relative overflow-hidden rounded-lg">
             <Image
-              src="/06.jpg"
+              src="/c6.jpg"
               alt="Instagram product 6"
               layout="fill"
               objectFit="cover"
