@@ -126,7 +126,7 @@ export default function Navbar() {
               <span className="absolute left-0 bottom-0 w-full h-0.5 bg-[#007580] scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
             </Link>
             <Link
-              href="https://comfortly-h8.vercel.app/studio"
+              href="/studio"
               className="text-gray-700 hover:text-[#007580] group relative"
               onClick={toggleMobileMenu}
             >
