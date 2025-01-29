@@ -11,6 +11,14 @@ export const productSchema = defineType({
       type: "string",
     },
     {
+       name: "slug",
+       type: "slug",
+       title: "Slug",
+       options:{
+        source: "title",
+       }
+    },
+    {
       name: "price",
       title: "Price",
       type: "number",

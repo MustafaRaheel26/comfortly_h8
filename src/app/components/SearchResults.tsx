@@ -2,23 +2,36 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { Product } from "@/types/products";
-import { firstFiveProducts } from "@/src/sanity/lib/queries";
 import { client, urlFor } from "@/src/sanity/lib/client";
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { addToCart } from "@/src/app/actions/actions";
 
-export default function AboutPopularProduct() {
+export default function SearchResults() {
   const [products, setProducts] = useState<Product[]>([]);
+  const searchParams = useSearchParams();
+  const query = searchParams?.get("query") || "";
 
   useEffect(() => {
     async function fetchProducts() {
-      const fetchedProducts: Product[] = await client.fetch(firstFiveProducts);
+      if (!query) return;
+
+      const fetchedProducts: Product[] = await client.fetch(
+        `*[_type == "products" && title match "${query}*"]{
+          _id,
+          title,
+          price,
+          slug,
+          image,
+          badge
+        }`
+      );
       setProducts(fetchedProducts);
     }
     fetchProducts();
-  }, []);
+  }, [query]);
 
   const handleAddToCart = (e: React.MouseEvent, product: Product) => {
     e.preventDefault();
@@ -31,14 +44,14 @@ export default function AboutPopularProduct() {
 
   return (
     <section className="w-full mx-auto px-6 py-20">
-      <header className="mb-10">
+      <header className="mb-10 flex justify-between items-center">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-          Popular Products
+          Search Results for &quot;{query}&quot;
         </h1>
       </header>
 
       {products.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((prod) => {
             const productImage =
               prod.image && Array.isArray(prod.image)
@@ -106,7 +119,11 @@ export default function AboutPopularProduct() {
           })}
         </div>
       ) : (
-        <div>No products available.</div>
+        <div className="text-center">
+          <h2 className="text-xl font-medium text-gray-600">
+            No products found for &quot;{query}&quot;
+          </h2>
+        </div>
       )}
     </section>
   );
