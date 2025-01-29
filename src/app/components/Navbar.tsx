@@ -31,7 +31,7 @@ export default function Navbar() {
         {/* Search Bar */}
         <form
           onSubmit={handleSearch}
-          className="flex-1 flex justify-center relative"
+          className="hidden md:flex flex-1 justify-center relative"
         >
           <div className="relative w-[300px] group focus-within:w-[400px] transition-all duration-300 ease-in-out">
             <input
@@ -39,10 +39,10 @@ export default function Navbar() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search..."
-              className="w-full p-2 text-gray-700 rounded-full border-2 border-gray-300 focus:ring-[#007580] focus:w-full transition-all duration-300 ease-in-out"
+              className="w-full p-2 text-gray-700 rounded-full border-2 border-gray-300 focus:ring-2 focus:ring-[#007580] focus:w-full transition-all duration-300 ease-in-out"
             />
-            <button type="submit">
-              <FaSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#007580] text-lg transition-all duration-300 ease-in-out" />
+            <button type="submit" className="absolute right-3 top-1/2 transform -translate-y-1/2">
+              <FaSearch className="text-[#007580] text-lg transition-all duration-300 ease-in-out" />
             </button>
           </div>
         </form>
@@ -94,9 +94,28 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile Search Bar */}
+      <form
+        onSubmit={handleSearch}
+        className="md:hidden flex justify-center mt-4 px-4"
+      >
+        <div className="relative w-full mb-3 items-center max-w-md group focus-within:w-full transition-all duration-300 ease-in-out">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search..."
+            className="w-full p-2 text-gray-700 rounded-full border-2 border-gray-300 focus:ring-[#007580] focus:w-full transition-all duration-300 ease-in-out"
+          />
+          <button type="submit" className="absolute right-3 top-1/2 transform -translate-y-1/2">
+            <FaSearch className="text-[#007580] text-lg transition-all duration-300 ease-in-out" />
+          </button>
+        </div>
+      </form>
+
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-md">
+        <div className="md:hidden bg-white shadow-md mt-4">
           <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">
             <Link
               href="/"
